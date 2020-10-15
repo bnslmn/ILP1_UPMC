@@ -1,0 +1,7 @@
+let a=1 in
+let b=2 in 
+let c=1
+let delta=b*b-4*a*c in
+if delta < 0 then print("Pas de solutions !")
+else if delta > 0 then print("Discriminant positif : deux solutions")
+else if delta = 0 then print("Discriminant nul : une seule solution")
