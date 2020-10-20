@@ -4,6 +4,7 @@ stages:
 - cours
 - tme
 
+
 ILP1:
   stage: cours
   script: >
@@ -12,6 +13,7 @@ ILP1:
     com.paracamplus.ilp1.tools.test.ProgramCallerTest
     com.paracamplus.ilp1.interpreter.test.InterpreterTest
     com.paracamplus.ilp1.compiler.test.CompilerTest
+
   artifacts:
     reports:
       junit: report.xml
@@ -23,6 +25,6 @@ TME1:
    com.paracamplus.ilp1.ilp1tme1.test.InterpreterTest 
    com.paracamplus.ilp1.ilp1tme1.test.CompilerTest
 
-artifacts:
-reports:
-junit: report.xml
+  artifacts:
+   reports:
+     junit: report.xml
