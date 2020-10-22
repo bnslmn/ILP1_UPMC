@@ -22,8 +22,8 @@ TME1:
   stage: tme
   script: >
    /home/dlp/run.sh -id TME1 -name TME1
-   com.paracamplus.ilp1.ilp1tme1.test.InterpreterTest 
-   com.paracamplus.ilp1.ilp1tme1.test.CompilerTest
+   com.paracamplus.ilp1.ilp1tme1.test.TestCompiler 
+   com.paracamplus.ilp1.ilp1tme1.test.TestInterprete
 
   artifacts:
    reports:
