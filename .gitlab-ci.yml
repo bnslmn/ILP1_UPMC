@@ -24,6 +24,7 @@ TME1:
    /home/dlp/run.sh -id TME1 -name TME1
    com.paracamplus.ilp1.ilp1tme1.test.TestCompiler 
    com.paracamplus.ilp1.ilp1tme1.test.TestInterprete
+   com.paracamplus.ilp1tme1.sequence.ASTsequenceTest
 
   artifacts:
    reports:
