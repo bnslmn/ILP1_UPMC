@@ -27,14 +27,14 @@ TME1:
    com.paracamplus.ilp1tme1.sequence.ASTsequenceTest
   
   artifacts:
-  	reports:
-  	  junit: report.xml
+   reports:
+    junit: report.xml
    
 TME2:
-  stage : tme
-  script : >
-  	/home/dsl/run.sh -id TME2 -name TME2
-  	com.paracamplus.ilp1.ilp1tme2.ex1.InterpreteTest
+  stage: cours
+  script: >
+   /home/dsl/run.sh -id TME2 -name TME2
+   com.paracamplus.ilp1.ilp1tme2.ex1.InterpreteTest
 
   artifacts:
    reports:
