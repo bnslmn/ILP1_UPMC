@@ -21,12 +21,13 @@ import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp1.interpreter.test.InterpreterRunner;
+import com.paracamplus.ilp1.interpreter.test.InterpreterTest;
 import com.paracamplus.ilp1.parser.ParseException;
 import com.paracamplus.ilp1.parser.xml.IXMLParser;
 import com.paracamplus.ilp1.parser.xml.XMLParser;
 
 @RunWith(Parameterized.class)
-public class InterpreteTest{
+public class InterpreteTest extends InterpreterTest{
     
     protected static String[] samplesDirName = { "SamplesTME2" }; 
     protected static String pattern = ".*\\.ilpml";
@@ -34,11 +35,7 @@ public class InterpreteTest{
     
     protected File file;
     public InterpreteTest(File file) {
-    		this.file=file;}
-    
-    public File getFile() {
-    	return file;
-    }
+    		super(file);}
 
     public void configureRunner(InterpreterRunner run) throws EvaluationException {
     	// configuration du parseur
@@ -64,12 +61,13 @@ public class InterpreteTest{
     @Test
     public void processFile() throws EvaluationException, ParseException, IOException{
     	
-    	
+    	try {
     	InterpreterRunner run = new InterpreterRunner();
     	configureRunner(run);
     	run.testFile(file);
     	run.checkPrintingAndResult(file);
-    	}
+    	
+    }catch(Exception e) {} }
     
         
     @Parameters(name = "{0}")
