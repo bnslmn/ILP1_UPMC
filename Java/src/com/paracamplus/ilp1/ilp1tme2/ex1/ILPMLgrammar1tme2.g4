@@ -70,6 +70,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 
 // variables
     | var=IDENT # Variable
+	
 
 // déclaration de variable locale
     | 'let' vars+=IDENT '=' vals+=expr ('and' vars+=IDENT '=' vals+=expr)* 
@@ -78,6 +79,16 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
  // alternative (if then else)
     | 'if' condition=expr 'then' consequence=expr 
         ('else' alternant=expr)? # Alternative
+        
+//  affectation
+    | id=IDENT '=' value=expr # Affectation
+    
+//  boucle while
+
+    | 'while' condition=expr 'do' (wbody+=expr)* # Whileloop
+    
+//  function
+    | 'function' name=expr '('(params+=expr ','?)*')' fbody+=expr+# Function
     ;
     
        
