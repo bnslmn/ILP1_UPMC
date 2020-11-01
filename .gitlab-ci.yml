@@ -27,7 +27,7 @@ TME1:
 TME2:
   stage: tme
   script: >
-   /home/dsl/run.sh -id TME2 -name TME2
+   /home/dlp/run.sh -id TME2 -name TME2
    com.paracamplus.ilp1.ilp1tme2.ex1.InterpreteTest
   artifacts:
    reports:
