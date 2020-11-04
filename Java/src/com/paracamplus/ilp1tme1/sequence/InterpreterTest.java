@@ -1,10 +1,14 @@
 package com.paracamplus.ilp1tme1.sequence;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Collection;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 import com.paracamplus.ilp1.interfaces.IASTfactory;
 import com.paracamplus.ilp1.interpreter.GlobalVariableEnvironment;
@@ -16,6 +20,7 @@ import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp1.interpreter.test.InterpreterRunner;
+import com.paracamplus.ilp1.parser.ParseException;
 import com.paracamplus.ilp1.parser.ilpml.ILPMLParser;
 import com.paracamplus.ilp1.parser.xml.IXMLParser;
 import com.paracamplus.ilp1.parser.xml.XMLParser;
@@ -23,6 +28,8 @@ import com.paracamplus.ilp1.parser.xml.XMLParser;
 
 @RunWith(Parameterized.class)
 public class InterpreterTest extends com.paracamplus.ilp1.interpreter.test.InterpreterTest{
+	
+	protected ILPMLParser parser;
 	
 	public InterpreterTest(File file) {
 		super(file);
@@ -48,6 +55,24 @@ public class InterpreterTest extends com.paracamplus.ilp1.interpreter.test.Inter
 	    run.setInterpreter(interpreter);
 			
 		}
-
+	
+	  @Test
+	    public void processFile() throws EvaluationException, ParseException, IOException {
+	    	InterpreterRunner run = new InterpreterRunner();
+	    	configureRunner(run);
+	    	run.testFile(file);
+	    	run.checkPrintingAndResult(file);
+	    	
+	    	
+	  }
+	  
+	  @Parameters(name = "{0}")
+	    public static Collection<File[]> data() throws Exception {
+	    	return InterpreterRunner.getFileList(samplesDirName, pattern);
+	    }    	
+	    
+	
+/*	
+*/
 
 }

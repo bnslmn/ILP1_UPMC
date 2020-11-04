@@ -1,1 +1,1 @@
-java.lang.NullPointerException: Cannot invoke "com.paracamplus.ilp1.interfaces.IASTexpression.accept(com.paracamplus.ilp1.interfaces.IASTvisitor, Object)" because "e" is null
+java.lang.NullPointerException
