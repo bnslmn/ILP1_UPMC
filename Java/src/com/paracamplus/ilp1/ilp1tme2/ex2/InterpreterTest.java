@@ -1,3 +1,9 @@
+/* 
+ * 
+ * BENSLIMANE AMINE COPYRIGHT
+ * 
+ * */
+
 package com.paracamplus.ilp1.ilp1tme2.ex2;
 
 
@@ -37,6 +43,7 @@ public class InterpreterTest extends InterpresterTest{
 	
 	public void configureRunner(InterpreterRunner run) throws EvaluationException {
     	// configuration du parseur
+		
         IASTfactory factory = new ASTfactory();
         IXMLParser xmlParser = new XMLParser(factory);
         xmlParser.setGrammar(new File(XMLgrammarFile));

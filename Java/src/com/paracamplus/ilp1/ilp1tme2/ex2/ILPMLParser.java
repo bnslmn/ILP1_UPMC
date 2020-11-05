@@ -2,6 +2,8 @@ package com.paracamplus.ilp1.ilp1tme2.ex2;
 
 
 
+import static org.junit.Assert.assertEquals;
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -34,6 +36,12 @@ public class ILPMLParser extends com.paracamplus.ilp1.ilp1tme2.ex1.ILPMLParser{
 			ParseTreeWalker walker = new ParseTreeWalker();
 			extractor = new ILPMLListener(factory);
 			walker.walk(extractor, tree);
+			
+			ConstantCount cp_const = new ConstantCount();
+			int counterVisitor = cp_const.visit(tree.node, null);
+			int counterListener = extractor.getNb_Const();
+			System.out.println("Le compteur listener = compteur visiteur ? --> "+counterListener+"="+counterVisitor);
+			assertEquals(counterVisitor, counterListener);
 		
 			return tree.node;
 			
