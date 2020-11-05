@@ -30,6 +30,14 @@ TME2:
    /home/dlp/run.sh -id TME2 -name TME2
    com.paracamplus.ilp1.ilp1tme2.ex1.InterpresterTest
    com.paracamplus.ilp1.ilp1tme2.ex2.InterpreterTest
+
+TME3:
+  stage: tme
+  script: >
+   /home/dlp/run.sh -id TME3 -name TME3
+   com.paracamplus.ilp1.ilp1tme3.compiler.test.CompilerTest
+   com.paracamplus.ilp1.ilp1tme3.interpreter.test.InterpreterTest
+
   artifacts:
    reports:
      junit: report.xml
