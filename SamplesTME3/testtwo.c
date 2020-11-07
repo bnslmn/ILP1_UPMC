@@ -10,9 +10,9 @@ ILP_Object pi;
 ILP_Object ilp_program () 
 { 
 { 
-  ILP_Object ilptmp2; 
-ilptmp2 = ILP_PI; 
-return ILP_sinus(ilptmp2);
+  ILP_Object ilptmp16; 
+ilptmp16 = ILP_PI; 
+return ILP_sinus(ilptmp16);
 }
 
 } 

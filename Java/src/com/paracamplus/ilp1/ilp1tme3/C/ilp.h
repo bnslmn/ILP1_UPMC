@@ -15,6 +15,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <setjmp.h>
+#include <math.h>
 
 /** Compatibility */
 #if !defined(__APPLE_CC__)
@@ -59,6 +60,10 @@ typedef struct ILP_Object {
                int                 methods_count;
                ILP_general_function method[1];
           } asClass;
+          struct asVector {
+                     int     _size;
+                     struct ILP_Object*   asVectElem[1];
+          } asVector;
           struct asMethod {
                struct ILP_Class*   class_defining;
                char*               name;
@@ -343,6 +348,25 @@ extern ILP_Object ILP_dont_call_super_method(
 #define ILP_Xor(o1,o2) \
   ILP_xor(o1,o2)
 
+
+/* Vector TME3 By Amine Benslimane */
+
+#define ILP_AllocateVector(length) \
+  ILP_malloc(sizeof(struct ILP_Object) \
+             + (sizeof(ILP_Object) * (length)), &ILP_object_Vector_class);
+
+#define ILP_isVector(o) \
+  ((o)->_class == &ILP_object_Vector_class)
+
+#define ILP_Vector2ILP(v) \
+  ILP_make_vector(v);
+
+#define ILP_CheckIfVector(o) \
+  if ( ! ILP_isVector(o) ) { \
+       ILP_domain_error("Not a vector", o); \
+  };
+     
+
 /** Constant predefined classes */
 
 extern struct ILP_Class ILP_object_Object_class;
@@ -360,6 +384,7 @@ extern struct ILP_Field ILP_object_defining_class_field;
 extern struct ILP_Field ILP_object_value_field;
 extern struct ILP_Method ILP_object_print_method;
 extern struct ILP_Method ILP_object_classOf_method;
+extern struct ILP_Class ILP_object_Vector_class;
 
 /** Primitives. */
 
@@ -392,7 +417,10 @@ extern ILP_Object ILP_print (ILP_Object self);
 extern ILP_Object ILPm_print (ILP_Closure useless, ILP_Object self);
 extern ILP_Object ILP_classOf (ILP_Object self);
 extern ILP_Object ILPm_classOf (ILP_Closure useless, ILP_Object self);
-extern ILP_Object ILP_sinus (ILP_Object o);                               // ADDED BY BENSLIMANE AMINE COPYRIGHT !
+extern ILP_Object ILP_sinus (ILP_Object o);                             // ADDED BY BENSLIMANE AMINE COPYRIGHT !
+extern ILP_Object ILP_makeVector(ILP_Object o1 , ILP_Object o2);
+extern ILP_Object ILP_vectorLength(ILP_Object o); 
+extern ILP_Object ILP_vectorGet(ILP_Object o1 , ILP_Object o2);
 
 extern ILP_Object ILP_malloc (int size, ILP_Class class);
 extern ILP_Object ILP_make_instance (ILP_Class class);

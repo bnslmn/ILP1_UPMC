@@ -9,9 +9,9 @@ ILP_Object sinus;
 ILP_Object ilp_program () 
 { 
 { 
-  ILP_Object ilptmp1; 
-ilptmp1 = ILP_Integer2ILP(0); 
-return ILP_sinus(ilptmp1);
+  ILP_Object ilptmp15; 
+ilptmp15 = ILP_Integer2ILP(0); 
+return ILP_sinus(ilptmp15);
 }
 
 } 

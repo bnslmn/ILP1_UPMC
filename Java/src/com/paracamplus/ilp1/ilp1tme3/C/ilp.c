@@ -905,7 +905,7 @@ ILP_print_fields (ILP_Object o,
      ILP_print(o->_content.asInstance.field[last->_content.asField.offset]);
 }
 
-ILP_Object                          // TME3 FONCTION SINUS, BY BENSLIMANE AMINE                 
+ILP_Object                                          
 ILP_print (ILP_Object self)
 {
      if ( self->_class == &ILP_object_Integer_class ) {
@@ -930,7 +930,7 @@ ILP_print (ILP_Object self)
      return ILP_FALSE;
 }
 
-ILP_Object
+ILP_Object                  // TME3 FONCTION SINUS, BY BENSLIMANE AMINE 
 ILP_sinus(ILP_Object o){
 	
 	if ( ILP_isFloat(o) ){
@@ -942,7 +942,77 @@ ILP_sinus(ILP_Object o){
 	}
 
 }
-/*
+
+ILP_Object
+ILP_makeVector(ILP_Object o1, ILP_Object o2)
+{
+	if ( ILP_isInteger(o1) ){
+		int size = o1->_content.asInteger;
+		if(size > 0){
+			ILP_Object result = ILP_AllocateVector(size);
+			result->_content.asVector._size = size;
+			for (int i=0; i< size; i++){
+				result->_content.asVector.asVectElem[i]=o2;
+			}
+			return result;
+		}
+		else {
+			return ILP_domain_error("Number Argument <= 0", o1);
+		}
+	} else {
+		return ILP_domain_error("Not a number", o1);
+	}
+
+}
+
+ILP_Object
+ILP_vectorLength(ILP_Object o){
+	
+	if (ILP_isVector(o)){
+		return ILP_make_integer(o->_content.asVector._size);
+	}else{
+	
+		return ILP_domain_error("Not a vector ! ",o);
+	}
+
+}
+
+ILP_Object 									//TME3 BENSLIMANE AMINE
+ILP_vectorGet(ILP_Object o1 , ILP_Object o2){
+
+	if (ILP_isVector(o1)){
+			
+			if (ILP_isInteger(o2)){
+			int taille = o1->_content.asVector._size;
+			int index = o2->_content.asInteger;
+			
+			if (index >= 0){
+				if(index < taille){
+					return o1->_content.asVector.asVectElem[index];
+				}else{
+					return ILP_domain_error ("Index supérieur à la taille du vecteur",o2);
+                    }
+					
+			}else{
+				return ILP_domain_error ("Index négatif, erreur!",o2);
+                }
+				
+			
+			}else{
+				return ILP_domain_error ("L'index n'est pas un entier !",o2);
+                }
+				
+		
+	
+	}
+    else{
+		return ILP_domain_error ("L'objet n'est pas un vecteur !",o1);
+        }
+		
+
+}
+
+
 
 
 ILP_Object
@@ -951,8 +1021,7 @@ ILPm_print (ILP_Closure useless, ILP_Object self)
      return ILP_print(self);
 }
 
-/** Yields the class of an object. The class is also an object
- * as advocated by ObjVlisp. */
+/** Yields the class of an object. The class is also an object as advocated by ObjVlisp. */
 
 ILP_Object
 ILP_classOf (ILP_Object self)

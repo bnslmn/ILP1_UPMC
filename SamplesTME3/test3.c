@@ -3,15 +3,22 @@
 #include "ilp.h" 
 
 /* Global variables */ 
-ILP_Object sinus;
+ILP_Object makeVector;
+ILP_Object vectorLength;
 
 
 ILP_Object ilp_program () 
 { 
 { 
-  ILP_Object ilptmp1; 
-ilptmp1 = ILP_Integer2ILP(30); 
-return ILP_sinus(ilptmp1);
+  ILP_Object ilptmp8; 
+{ 
+  ILP_Object ilptmp9; 
+  ILP_Object ilptmp10; 
+ilptmp9 = ILP_Integer2ILP(1); 
+ilptmp10 = ILP_Integer2ILP(1); 
+ilptmp8 = ILP_makeVector(ilptmp9, ilptmp10);
+}
+return ILP_vectorLength(ilptmp8);
 }
 
 } 

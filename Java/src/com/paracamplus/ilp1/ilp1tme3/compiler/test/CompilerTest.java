@@ -38,7 +38,7 @@ public class CompilerTest {
     
     protected static String[] samplesDirName = { "SamplesTME3" };
     protected static String pattern = ".*\\.ilpml";
-    protected static String scriptCommand = "Java/src/com/paracamplus/ilp1/ilp1tme3/C/compileThenRun.sh";
+    protected static String scriptCommand = "Java/src/com/paracamplus/ilp1/ilp1tme3/C/compileThenRun.sh +gc";
     protected static String XMLgrammarFile = "XMLGrammars/grammar1.rng";
     
     protected File file;
@@ -75,7 +75,7 @@ public class CompilerTest {
     }    	
     
     @Test
-    public void processFile() throws CompilationException, ParseException, IOException {
+    public void processFile() throws CompilationException, ParseException, IOException{
     	CompilerRunner run = new CompilerRunner();
     	configureRunner(run);
         run.checkPrintingAndResult(file, run.compileAndRun(file));	

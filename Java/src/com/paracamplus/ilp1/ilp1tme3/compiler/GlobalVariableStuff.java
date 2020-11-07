@@ -15,6 +15,12 @@ public class GlobalVariableStuff {
                 new Primitive("throw", "ILP_throw", 1));
         env.addGlobalFunctionValue(
         		new Primitive("sinus", "ILP_sinus", 1));
+        env.addGlobalFunctionValue(
+        		new Primitive("makeVector", "ILP_makeVector",2));
+        env.addGlobalFunctionValue(
+        		new Primitive("vectorLength", "ILP_vectorLength",1));
+        env.addGlobalFunctionValue(
+        		new Primitive("vectorGet" , "ILP_vectorGet" , 2));
     }
     
 }
